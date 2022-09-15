@@ -2,9 +2,15 @@ import logo from './logo.svg';
 import './App.css';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
-import { TextField } from '@mui/material';
-import { Box } from '@mui/material';
+import { Box, TextField } from '@mui/material';
+import MuiAppBar from '@mui/material/AppBar'
 import { React, useState } from 'react';
+import styled from '@emotion/styled';
+import Typography from '@mui/material/Typography';
+import Investments from './Investment';
+import Bar from './Bar';
+import Graph from './Graph'
+
 
 const initialValues = {
   ror: "",
@@ -40,56 +46,18 @@ function App() {
 
   return (
       <div className="App">
-        <Box>
-          <div>
-            <TextField 
-              name="ror" 
-              label="Rate of Return" 
-              variant="outlined"
-              //type="number"
-              value={values.ror}
-              onChange={handleChange}
-               />
-          </div>
-          <div>
-            <TextField 
-              name="years" 
-              label="Years" 
-              variant="outlined" 
-              //type="number" 
-              onChange={handleChange} 
-              value={values.years} />
-          </div>
-          <div>
-            <TextField 
-              name="contribution" 
-              label="Annual Contribution" 
-              variant="outlined" 
-              //type="number" 
-              onChange={handleChange} 
-              value={values.contribution} />
-          </div>
-          <div>
-            <Button onClick={handleSubmit} variant="contained">Submit</Button>
-          </div> 
-          {/* <div>
-            <TextField id="outlined-basic" label="Year 3 Contribution" variant="outlined" />
-          </div>
-          <div>
-            <TextField id="outlined-basic" label="Year 4 Contribution" variant="outlined" />
-          </div>
-          <div>
-            <TextField id="outlined-basic" label="Year 5 Contribution" variant="outlined" />
-          </div>
-          <div>
-            <TextField id="outlined-basic" label="Year 6 Contribution" variant="outlined" />
-          </div>
-          <div>
-            <TextField id="outlined-basic" label="Year 7 Contribution" variant="outlined" />
-          </div>
-          <div>
-            <TextField id="outlined-basic" label="Year 8 Contribution" variant="outlined" />
-          </div> */}
+        <Bar />
+        <Graph />
+        <Box
+          sx={{
+            marginTop: 10,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Investments />
+
         </Box>
       </div>
   );
