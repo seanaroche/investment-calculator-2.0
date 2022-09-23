@@ -47,7 +47,7 @@ function App() {
   return (
       <div className="App">
         <Bar />
-        <Graph />
+        
         <Box
           sx={{
             marginTop: 10,

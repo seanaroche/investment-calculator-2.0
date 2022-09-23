@@ -23,6 +23,7 @@ export default function Investments() {
   const [total, setTotal] = useState(null);
   const [values, setValues] = useState(initialValues);
   const [yoyTotals, setYoyTotals] = useState([])
+  const [show, setShow] = useState(false);
 
   const handleChange = (e) => {
         const { name, value } = e.target;
@@ -54,10 +55,12 @@ export default function Investments() {
     console.log(total);
     setTotal(total);
     setYoyTotals(runningTotals);
+    setShow(!show);
   }
 
   return(
     <React.Fragment>
+        <Graph arr={yoyTotals}/>
         <Title>Investment Information</Title>
         <Stack
             component="form"
