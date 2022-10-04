@@ -2,15 +2,9 @@ import logo from './logo.svg';
 import './App.css';
 import Button from '@mui/material/Button';
 import Input from '@mui/material/Input';
-import { Box, TextField } from '@mui/material';
-import MuiAppBar from '@mui/material/AppBar'
+import { TextField } from '@mui/material';
+import { Box } from '@mui/material';
 import { React, useState } from 'react';
-import styled from '@emotion/styled';
-import Typography from '@mui/material/Typography';
-import Investments from './Investment';
-import Bar from './Bar';
-import Graph from './Graph'
-
 
 const initialValues = {
   ror: "",
@@ -33,31 +27,75 @@ function App() {
     console.log(values.years);
     console.log(values.ror);
     console.log(values.contribution);
-    let total = 0;
-    for (let i = 1; i <= values.years; i++) {
-      total += values.contribution;
+    var total = 0;
+    var annualContribution = parseInt(values.contribution);
+    var numOfYears = parseInt(values.years);
+    var rate = parseFloat(values.ror);
+    console.log("parsed contribution: " + annualContribution);
+    console.log("parsed years: " + numOfYears);
+    console.log("parsed ror: " + rate);
+    for (let i = 1; i <= numOfYears; i++) {
+      total += annualContribution;
       console.log("total after adding contribution in year" + i + ": " + total);
-      total += total * (values.ror);
+      total += total * rate;
       console.log("total after rate of return in year" + i + ": " + total);
-      //console.log("Total after year " + i + " " + total);
+      console.log("Total after year " + i + " " + total);
     }
     console.log(total);
   }
 
   return (
       <div className="App">
-        <Bar />
-        <Graph />
-        <Box
-          sx={{
-            marginTop: 10,
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-          }}
-        >
-          <Investments />
-
+        <Box>
+          <div>
+            <TextField 
+              name="ror" 
+              label="Rate of Return" 
+              variant="outlined"
+              //type="number"
+              value={values.ror}
+              onChange={handleChange}
+               />
+          </div>
+          <div>
+            <TextField 
+              name="years" 
+              label="Years" 
+              variant="outlined" 
+              //type="number" 
+              onChange={handleChange} 
+              value={values.years} />
+          </div>
+          <div>
+            <TextField 
+              name="contribution" 
+              label="Annual Contribution" 
+              variant="outlined" 
+              //type="number" 
+              onChange={handleChange} 
+              value={values.contribution} />
+          </div>
+          <div>
+            <Button onClick={handleSubmit} variant="contained">Submit</Button>
+          </div> 
+          {/* <div>
+            <TextField id="outlined-basic" label="Year 3 Contribution" variant="outlined" />
+          </div>
+          <div>
+            <TextField id="outlined-basic" label="Year 4 Contribution" variant="outlined" />
+          </div>
+          <div>
+            <TextField id="outlined-basic" label="Year 5 Contribution" variant="outlined" />
+          </div>
+          <div>
+            <TextField id="outlined-basic" label="Year 6 Contribution" variant="outlined" />
+          </div>
+          <div>
+            <TextField id="outlined-basic" label="Year 7 Contribution" variant="outlined" />
+          </div>
+          <div>
+            <TextField id="outlined-basic" label="Year 8 Contribution" variant="outlined" />
+          </div> */}
         </Box>
       </div>
   );
