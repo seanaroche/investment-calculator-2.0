@@ -5,6 +5,7 @@ import Input from '@mui/material/Input';
 import { TextField } from '@mui/material';
 import { Box } from '@mui/material';
 import { React, useState } from 'react';
+import Graph from './Graph';
 
 const initialValues = {
   ror: "",
@@ -14,6 +15,8 @@ const initialValues = {
 
 function App() {
   const [values, setValues] = useState(initialValues);
+
+  const [data, setData] = useState([]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -31,6 +34,10 @@ function App() {
     var annualContribution = parseInt(values.contribution);
     var numOfYears = parseInt(values.years);
     var rate = parseFloat(values.ror);
+    const data = [{
+      year: 0,
+      amount: 0,
+    }];
     console.log("parsed contribution: " + annualContribution);
     console.log("parsed years: " + numOfYears);
     console.log("parsed ror: " + rate);
@@ -40,12 +47,18 @@ function App() {
       total += total * rate;
       console.log("total after rate of return in year" + i + ": " + total);
       console.log("Total after year " + i + " " + total);
+      data.push({
+        year: i,
+        amount: total,
+      });
     }
+    setData(data);
     console.log(total);
   }
 
   return (
       <div className="App">
+        <Graph investData={data}/>
         <Box>
           <div>
             <TextField 
@@ -97,6 +110,7 @@ function App() {
             <TextField id="outlined-basic" label="Year 8 Contribution" variant="outlined" />
           </div> */}
         </Box>
+
       </div>
   );
 }

@@ -13,29 +13,29 @@ function createData(year, amount) {
 
 
 
-export default function Graph({arr}) {
+export default function Graph({investData}) {
   const theme = useTheme();
 
-//   const data = [
-//     createData(0, 300),
-//     createData(1, 600),
-//     createData(2,800),
-//   ]
+  const data = [
+    createData(0, 300),
+    createData(1, 600),
+    createData(2,800),
+   ]
 
 
-  const data = () => {
-    for (let i = 0; i < arr.length; i++) {
-        createData(i, arr[i]);
-        console.log(createData(i, arr[i]));
-    }
-  };
+  // const data = () => {
+  //   for (let i = 0; i < arr.length; i++) {
+  //       createData(i, arr[i]);
+  //       console.log(createData(i, arr[i]));
+  //   }
+  // };
 
   return (
     <React.Fragment>
       <Title>Portfolio Value</Title>
       <ResponsiveContainer width={'70%'} height={400}>
         <LineChart
-          data={data}
+          data={investData}
           margin={{
             top: 16,
             right: 16,
