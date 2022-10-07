@@ -33,21 +33,22 @@ export default function PortfolioValue({investData}) {
                 <Table sx={{ minWidth: 650 }} size="small" aria-label="a dense table">
                     <TableHead>
                     <TableRow>
-                        <TableCell align="right">Year</TableCell>
-                        <TableCell align="right">Contribution Amount</TableCell>
+                        <TableCell align="left">Year</TableCell>
+                        <TableCell align="left">Contribution Amount</TableCell>
                         <TableCell align="right">Balance</TableCell>
                     </TableRow>
                     </TableHead>
                     <TableBody>
-                    {investData?.map(({year, contribution, balance}) => (
+                    {investData.map(({year, contribution, balance}) => (
                         <TableRow
+                        key={year}
                         sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                         >
-                            <TableCell component="th" scope="row">
+                            <TableCell align="left" component="th" scope="row">
                                 {year}
                             </TableCell>
-                            <TableCell align="right">{contribution}</TableCell>
-                            <TableCell align="right">{balance}</TableCell>
+                            <TableCell align="left">{contribution}</TableCell>
+                            <TableCell align="right">{parseFloat(balance).toFixed(2)}</TableCell>
                         </TableRow>
                     ))}
                     </TableBody>
