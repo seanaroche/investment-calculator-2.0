@@ -3,37 +3,14 @@ import { useTheme } from '@mui/material/styles';
 import { LineChart, Line, XAxis, YAxis, Label, ResponsiveContainer } from 'recharts';
 import Title from './Title';
 
-// Generate Investment Data
-function createData(year, amount) {
-  return { year, amount };
-}
-
-//get state of value after each individual year from Investment.js
-//create data with year, amount pairs
-
-
 
 export default function Graph({investData}) {
   const theme = useTheme();
 
-  const data = [
-    createData(0, 300),
-    createData(1, 600),
-    createData(2,800),
-   ]
-
-
-  // const data = () => {
-  //   for (let i = 0; i < arr.length; i++) {
-  //       createData(i, arr[i]);
-  //       console.log(createData(i, arr[i]));
-  //   }
-  // };
-
   return (
     <React.Fragment>
       <Title>Portfolio Value</Title>
-      <ResponsiveContainer width={'70%'} height={400}>
+      <ResponsiveContainer width="100%" height={300}>
         <LineChart
           data={investData}
           margin={{
@@ -79,7 +56,7 @@ export default function Graph({investData}) {
           <Line
             isAnimationActive={false}
             type="monotone"
-            dataKey="amount"
+            dataKey="balance"
             stroke={theme.palette.primary.main}
             dot={false}
           />
