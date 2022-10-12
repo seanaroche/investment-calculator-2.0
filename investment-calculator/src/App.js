@@ -6,10 +6,13 @@ import { TextField, Paper, Grid } from '@mui/material';
 import { Box } from '@mui/material';
 import { React, useState } from 'react';
 import Graph from './Graph';
-import Bar from './Bar';
-import Investments from './Investment';
+import Bar from './components/Bar';
+import Investments from './components/Investment';
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { MuiThemeProvider, createTheme } from "@material-ui/core/styles";
+import Login from './components/Login';
+import Register from './components/Register';
+import { Routes, Route } from 'react-router-dom';
 
 const baseTheme = createTheme({
   palette: {
@@ -24,14 +27,19 @@ function App() {
       <div className="App">
         <MuiThemeProvider theme={baseTheme}>
           <CssBaseline />
-            <Bar></Bar>
+            <Bar />
+            <Routes>
+              <Route path="/" element={<Investments />} />
+              <Route path="/Login" element={<Login />} />
+              <Route path="/Register" element={<Register />} />
+            </Routes>
             <Box
               mt={5}
               mb={5}
               >
-              <Investments></Investments>
             </Box>
         </MuiThemeProvider>
+        {/* <Login></Login> */}
       </div>
   );
 }

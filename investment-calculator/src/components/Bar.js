@@ -6,6 +6,7 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import { BrowserRouter as Router, Link } from 'react-router-dom'
 
 export default function Bar() {
   return (
@@ -21,11 +22,18 @@ export default function Bar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" component="div" align="left" sx={{ flexGrow: 1 }}>
+          <Typography 
+            variant="h6"
+            component="div" 
+            align="left" 
+            sx={{ flexGrow: 1 }}
+            component={Link}
+            style={{textDecoration: 'none', color: 'white'}}
+            to="/">
             Portfolio Sandbox
           </Typography>
-          <Button color="inherit">Register</Button>
-          <Button color="inherit">Login</Button>
+            <Button href="/Login" color="inherit">Login</Button>
+            <Button href="/Register" color="inherit">Register</Button>
         </Toolbar>
       </AppBar>
     </Box>
